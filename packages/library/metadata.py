@@ -14,12 +14,12 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
 # Base metadata. MUST BE EDITED.
-BASE_IMAGE_URL = "ipfs://<-- Your CID Code-->"
-BASE_NAME = ""
+BASE_IMAGE_URL = "ipfs://QmNQyA9X2wMrUEfCXnuY5hSWsghG4P3Xqe5x3Z5mh5yKAZ"
+BASE_NAME = "Squirrel-Collection#"
 
 BASE_JSON = {
     "name": BASE_NAME,
-    "description": "",
+    "description": "A collection of Scrappy Squirrel",
     "image": BASE_IMAGE_URL,
     "attributes": [],
 }

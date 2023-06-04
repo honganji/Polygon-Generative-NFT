@@ -1,47 +1,58 @@
-## 👋 はじめに
+<p align="center">
+  <br />
+  <img width="100" src="./assets/polygon_logo.png" alt="ETH Logo">
+  <br/>
+  <br />
+  <p align="center">
+<img src="https://img.shields.io/badge/Solidity-0.8.17-blue?logo=solidity"/>
+<img src="https://img.shields.io/badge/hardhat-2.13.0-blue"/>
+<img src="https://img.shields.io/badge/React-18.2.0-blue?logo=react"/>
+<img src="https://img.shields.io/badge/-javascript-blue?logo=javascript"/>
+</p>
 
-`generative-nft-library` リポジトリは、Generative Art NFT を作成するためのライブラリです。
+<br/>
 
-NFT アバターやコレクターズアイテムを作成する目的で開発され、[Scrappy Squirrels](https://www.scrappysquirrels.co/) プロジェクトのアートワークを生成するために使用されました。
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-今回は、内容を日本語に翻訳するため、独立のリポジトリとして紹介しています。
+<br/>
 
-オリジナルのリポジトリは、[こちら](https://github.com/rounakbanik/generative-art-nft)です。
+## • Overview
 
-## 🐵 generative-nft-library について
+This project is made following [this instructions](https://app.unchain.tech/learn/Polygon-Generative-NFT/) made by engineer cmmunity `UNCHAIN`. This one is one of the best one to learn blockchain development.
 
-### 60 種類以下の特徴で 100 万枚以上の画像を生成可能
+This is dapp that you can send message and wave to the board. Also, if you're lucky, you can receive token(testnet token) from this contract.
 
-本ライブラリを使用することで、特徴量の組み合わせごとに画像を生成することができます。例えば、[Bored Apes](https://boredapeyachtclub.com/#/home) のようなプロジェクトで Generative Art を生成する場合、このライブラリは 12 億匹以上の異なる猿を生成することができます。
+## • Links
 
-### レアリティの重みの追加
+[Deployed here](https://polygon-generative-nft-puce.vercel.app/)
 
-また、このライブラリでは、各特徴の希少性を完全にコントロールできるように、画像生成プロセスを設定することができます。
+[![Frontend](assets/frontend.png)](https://polygon-generative-nft-puce.vercel.app/)
 
-### NFT に準拠した JSON メタデータの生成
+## • Launch
 
-OpenSea メタデータ要件（ひいては一般的な NFT メタデータ規格）に準拠した、NFT の JSON メタデータを生成する機能が追加されました。
+1. run `yarn install` in terminal.
 
-### 初心者でも簡単に使える
+2. make `.env` file under `packages/contract` and input your `Private Key` and `Alchemy HTTP Key` like below.
 
-このライブラリは、（Python などの）プログラミングの知識がなくても使うことができます。
+```
+PRIVATE_KEY = <YOUR_PRIVATE_KEY>
+STAGING_ALCHEMY_KEY = <ALCHEMY_HTTP_KEY>
+```
 
-## 💻 インストール方法
+3. run `yarn contract deploy` in terminal. The result would be like below.
 
-**このリポジトリをあなたの Github アカウントにフォークしてください**。
+```
+Deploying contracts with account:  0x04CD057E4bAD766361348F26E847B546cBBc7946
+Account balance:  272899657284590565
+WavePortal address:  0x40aB7863b1b4987Df1e514cD99791d523AA128A4
+```
 
-**必要なパッケージのインストール**
+4. change the line 6 in `packages/client/src/App.js`.
 
-`pip install Pillow pandas progressbar2` をインストールしましょう。
+```javascript
+const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+```
 
-使用するアセット（画像など）を `assets` フォルダにアップロードし、 `config.py` ファイルを埋めてから、 `python nft.py` を実行します。
+5. replace the json file in `packages/client/src/contracts/NFTCollectible.json` with the content of the json file in `packages/contract/artifacts/contracts/NFTCollectible.sol/NFTCollectible.json`.
 
-JSON メタデータを生成するために、BASE_NAME、BASE_IMAGE_URL、BASE_JSON を `metadata.py` で定義し、`python metadata.py` を実行します。
-
-## 🐿 Scrappy Squirrels について
-
-<img src='squirrels.gif' height="250" width="250" />
-
-本ライブラリは、Scrappy Squirrels Project の一環として作成されました。
-
-Scrappy Squirrels は、イーサリアム・ブロックチェーン上でランダムに生成される 10,000 の NFT コレクションです。
+6. Finally, run `yarn client start` in terminal and see how it works!
